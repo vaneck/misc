@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import eiscp
+import sys
+
+onkyo = eiscp.eISCP(host='onkyo')
+
+def set_volume(level):
+  onkyo.command('master-volume {}'.format(level))
+
+def change_volume(direction, magnitude):
+  assert direction == 'up' or direction == 'down', 'Specify up or down.'
+  level = int(onkyo.command('master-volume query')[1])
+  if direction == 'up':
+    level += int(magnitude)
+  elif direction == 'down':
+    level -= int(magnitude)
+  onkyo.command('master-volume {}'.format(level))
+
+if __name__ == '__main__':
+  if len(sys.argv) == 2:
+    set_volume(sys.argv[1])
+  elif len(sys.argv) == 3:
+    change_volume(sys.argv[1], sys.argv[2])
+  else:
+    print "Usage: {} target-volume|up n|down n".format(sys.argv[0])
+

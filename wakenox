@@ -1,0 +1,2 @@
+#!/bin/bash
+wakeonlan 30:5a:3a:47:f5:c2

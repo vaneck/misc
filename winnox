@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ssh nox bin/windows 
+if [[ "$?" -eq "255" ]]; then
+  ~/bin/wakenox && 
+  sleep 30 && 
+  ssh nox bin/windows
+fi

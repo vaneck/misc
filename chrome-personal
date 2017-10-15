@@ -1,0 +1,4 @@
+#!/bin/bash
+/usr/bin/google-chrome --user-data-dir=/home/eivanec/.config/google-chrome-personal --force-device-scale-factor=1.3 
+
+# --touch-devices=2
